@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+            integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+            crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<main class="d-flex justify-content-center">
+
+    <div id="mensaje" class="alert alert-success" role="alert">
+        <h4 class="alert-heading"> ¡Pago aprobado! </h4>
+        <hr>
+
+    </div>
+
+</main>
+
+<style>
+
+    body {
+        background-image: url("/images/background-color-light.jpeg");
+    }
+
+    main {
+        position: absolute;
+        width: 100%;
+        top: 10%;
+    }
+
+    #mensaje {
+        text-align: center;
+        font-size: x-large;
+        width: 50%;
+    }
+
+    h4 {
+        font-size: xxx-large;
+    }
+
+</style>
+
+<script>
+
+    const currentUrl = window.location.href;
+    const urlParams = new URLSearchParams(currentUrl);
+
+    let mensaje = $("#mensaje");
+    let paymentMethod = urlParams.get("payment_type");
+    mensaje.append("<p> <strong> El método de pago utilizado: </strong> " + paymentMethod + "</p>");
+    let paymentId = urlParams.get("payment_id");
+    mensaje.append("<p> <strong> El id de pago es:  </strong> " + paymentId + "</p>");
+    let externalReference = urlParams.get("external_reference");
+    mensaje.append("<p> <strong> Email de referencia:  </strong> " + externalReference + "</p>");
+
+</script>
+
+</body>
+</html>
